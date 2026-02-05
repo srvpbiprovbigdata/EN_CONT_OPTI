@@ -1,0 +1,62 @@
+table 'analisis_datos cp_activos_agrupaciones'
+	lineageTag: 2d8a5091-f6c8-42e9-953a-8dbca07110c9
+
+	column idactivo
+		dataType: string
+		lineageTag: 6a6c8b28-6681-4fc1-a430-abf190e0e8f0
+		summarizeBy: none
+		sourceColumn: idactivo
+
+		annotation SummarizationSetBy = Automatic
+
+	column subarea1
+		dataType: string
+		lineageTag: e7324827-a70d-47fd-a09c-3508c20507f3
+		summarizeBy: none
+		sourceColumn: subarea1
+
+		annotation SummarizationSetBy = Automatic
+
+	column subarea2
+		dataType: string
+		lineageTag: 27c21a14-236d-4446-90f4-374a60545e0a
+		summarizeBy: none
+		sourceColumn: subarea2
+
+		annotation SummarizationSetBy = Automatic
+
+	column idagrupacion
+		dataType: string
+		lineageTag: 3b6a4f14-e30b-45f2-a40d-42b1ff57691d
+		summarizeBy: none
+		sourceColumn: idagrupacion
+
+		annotation SummarizationSetBy = Automatic
+
+	column area
+		dataType: string
+		lineageTag: d488bc88-b0ea-4cd4-9ac1-ef0ce870435b
+		summarizeBy: none
+		sourceColumn: area
+
+		annotation SummarizationSetBy = Automatic
+
+	column areaCP
+		dataType: string
+		lineageTag: ccbc8f20-4925-4b35-829b-0080dd1a7c45
+		summarizeBy: none
+		sourceColumn: areaCP
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'analisis_datos cp_activos_agrupaciones' = m
+		mode: import
+		source =
+				let
+				    Origen = MySQL.Database("172.16.15.18", "analisis_datos", [ReturnSingleDatabase=true]),
+				    analisis_datos_cp_activos_agrupaciones = Origen{[Schema="analisis_datos",Item="cp_activos_agrupaciones"]}[Data]
+				in
+				    analisis_datos_cp_activos_agrupaciones
+
+	annotation PBI_ResultType = Table
+
