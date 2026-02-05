@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Análisis de producible de plantas"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "57cb7655-fc72-8e0e-43c0-ab1a38be9881"
+  }
+}
