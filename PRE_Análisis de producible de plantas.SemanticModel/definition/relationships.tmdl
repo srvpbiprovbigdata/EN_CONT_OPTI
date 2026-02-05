@@ -1,0 +1,9 @@
+relationship c6fae189-55c9-4fb3-9763-a3fa0b07a678
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'analisis_datos cp_vw_powerbi_producible_v5'.Date
+	toColumn: LocalDateTable_19571e84-efba-4288-8ed8-f3549a54bef3.Date
+
+relationship AutoDetected_532a60d7-b606-495d-9f4b-f5d09ff4d2f0
+	fromColumn: 'analisis_datos cp_vw_powerbi_producible_v5'.IdActivo
+	toColumn: 'analisis_datos cp_activos_agrupaciones'.idactivo
+

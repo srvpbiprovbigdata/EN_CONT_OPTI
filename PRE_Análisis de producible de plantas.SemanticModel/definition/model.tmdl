@@ -1,0 +1,21 @@
+model Model
+	culture: es-ES
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: es-ES
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["analisis_datos cp_activos_agrupaciones","analisis_datos cp_vw_powerbi_producible_v5"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBIDesktopVersion = 2.146.1254.0 (25.08)+791a7518fadc83da883d79322a2658aff57c8db3
+
+ref table DateTableTemplate_5f6d6de6-081a-4124-abf1-d54edaf20476
+ref table 'analisis_datos cp_activos_agrupaciones'
+ref table 'analisis_datos cp_vw_powerbi_producible_v5'
+ref table LocalDateTable_19571e84-efba-4288-8ed8-f3549a54bef3
+
+ref cultureInfo es-ES
+

@@ -1,0 +1,259 @@
+table 'analisis_datos cp_vw_powerbi_producible_v5'
+	lineageTag: 2c5cac89-2526-442a-98a1-97fe2302b2f1
+
+	measure 'ExpBudget (GWh)' = sum('analisis_datos cp_vw_powerbi_producible_v5'[ProdPpto])/1000+sum('analisis_datos cp_vw_powerbi_producible_v5'[VertidosPpto])/1000
+		lineageTag: 518251ae-c37e-490e-b7d9-8c14198c7673
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'ExpCP (GWh)' = sum('analisis_datos cp_vw_powerbi_producible_v5'[ExpCP])/1000
+		lineageTag: 07b6fe36-1142-46f8-9f44-8423c3e8ce05
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'ExpWER (GWh)' = sum('analisis_datos cp_vw_powerbi_producible_v5'[Prod])/1000+sum('analisis_datos cp_vw_powerbi_producible_v5'[VertidosWER])/1000
+		lineageTag: fb3400c7-39a6-4a2b-934b-e95ce2b77265
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'ExpCCS (GWh)' = sum('analisis_datos cp_vw_powerbi_producible_v5'[Prod])/1000+sum('analisis_datos cp_vw_powerbi_producible_v5'[VertidosCCS])/1000
+		lineageTag: 9ef3ba59-0e5f-4086-a885-13245b2b6e92
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'ExpPI (GWh)' = sum('analisis_datos cp_vw_powerbi_producible_v5'[ExpPI])/1000
+		lineageTag: 8f1839d8-0cf9-4b96-8b49-714a39e12308
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'DevExpWER (%)' = 100*(sum('analisis_datos cp_vw_powerbi_producible_v5'[Prod])+sum('analisis_datos cp_vw_powerbi_producible_v5'[VertidosWER])-sum('analisis_datos cp_vw_powerbi_producible_v5'[ProdPpto])-sum('analisis_datos cp_vw_powerbi_producible_v5'[VertidosPpto]))/(sum('analisis_datos cp_vw_powerbi_producible_v5'[ProdPpto])+sum('analisis_datos cp_vw_powerbi_producible_v5'[VertidosPpto]))
+		lineageTag: 93bfc68b-a5e1-490b-aa12-399ddb023b59
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'DevExpCCS (%)' = 100*(sum('analisis_datos cp_vw_powerbi_producible_v5'[Prod])+sum('analisis_datos cp_vw_powerbi_producible_v5'[VertidosCCS])-sum('analisis_datos cp_vw_powerbi_producible_v5'[ProdPpto])-sum('analisis_datos cp_vw_powerbi_producible_v5'[VertidosPpto]))/(sum('analisis_datos cp_vw_powerbi_producible_v5'[ProdPpto])+sum('analisis_datos cp_vw_powerbi_producible_v5'[VertidosPpto]))
+		lineageTag: 12f25df8-63d5-4413-a41f-c6751dbbe354
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'DevExpPI (%)' = 100*(sum('analisis_datos cp_vw_powerbi_producible_v5'[ExpPI])-sum('analisis_datos cp_vw_powerbi_producible_v5'[ProdPpto])-sum('analisis_datos cp_vw_powerbi_producible_v5'[VertidosPpto]))/(sum('analisis_datos cp_vw_powerbi_producible_v5'[ProdPpto])+sum('analisis_datos cp_vw_powerbi_producible_v5'[VertidosPpto]))
+		lineageTag: fcec6fce-c9a2-4a32-b993-2b90b1f60a97
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'DevExpCP (%)' = 100*(sum('analisis_datos cp_vw_powerbi_producible_v5'[ExpCP])-sum('analisis_datos cp_vw_powerbi_producible_v5'[ProdPpto])-sum('analisis_datos cp_vw_powerbi_producible_v5'[VertidosPpto]))/(sum('analisis_datos cp_vw_powerbi_producible_v5'[ProdPpto])+sum('analisis_datos cp_vw_powerbi_producible_v5'[VertidosPpto]))
+		lineageTag: 2d917726-2ccc-41b6-bd93-caf1f0fc3a35
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'DevExpPIWER (%)' = [DevExpPI (%)]-[DevExpWER (%)]
+		lineageTag: bd71e278-9147-4b73-bf6c-eb3fc8f40649
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'ExpLT (GWh)' = sum('analisis_datos cp_vw_powerbi_producible_v5'[Longterm])/1000
+		lineageTag: 97bf6f24-e166-4cb0-877d-36ae37cb5b0e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'ExpMATLAB (GWh)' = sum('analisis_datos cp_vw_powerbi_producible_v5'[MATLAB])/1000
+		lineageTag: 31d4d9c5-f123-463f-9423-adebef0e84e2
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure NE = -sum('analisis_datos cp_vw_powerbi_producible_v5'[ExpPI])+sum('analisis_datos cp_vw_powerbi_producible_v5'[Prod])+sum('analisis_datos cp_vw_powerbi_producible_v5'[VertidosWER])
+		lineageTag: 3965c1f2-d466-49be-8c06-1543c328ab9c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure DR = sum('analisis_datos cp_vw_powerbi_producible_v5'[ExpPI])-sum('analisis_datos cp_vw_powerbi_producible_v5'[ProdPpto])-sum('analisis_datos cp_vw_powerbi_producible_v5'[VertidosPpto])
+		lineageTag: 9a36a195-2bc0-45aa-aaa9-cbdbadd30c33
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure NEp = [NE]/sum('analisis_datos cp_vw_powerbi_producible_v5'[ProdPpto])
+		lineageTag: c2657513-463b-4476-8a2d-a5f5dcb31b71
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure DRbp = [DR]/sum('analisis_datos cp_vw_powerbi_producible_v5'[ProdPpto])
+		lineageTag: b808d5cb-e999-440b-90a4-462c60aed05b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure DProd = (sum('analisis_datos cp_vw_powerbi_producible_v5'[Prod])-sum('analisis_datos cp_vw_powerbi_producible_v5'[ProdPpto]))/sum('analisis_datos cp_vw_powerbi_producible_v5'[ProdPpto])
+		lineageTag: c8bc76e8-4f66-4149-8c8e-78b518e1cf06
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure DVert = (sum('analisis_datos cp_vw_powerbi_producible_v5'[VertidosPpto])-sum('analisis_datos cp_vw_powerbi_producible_v5'[VertidosWER]))/sum('analisis_datos cp_vw_powerbi_producible_v5'[ProdPpto])
+		lineageTag: 1eba067e-8635-49f3-93ea-a92260f772ce
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure DevExpPICP = 'analisis_datos cp_vw_powerbi_producible_v5'[ExpPI (GWh)]-'analisis_datos cp_vw_powerbi_producible_v5'[ExpCP (GWh)]
+		lineageTag: 774e5505-0196-4387-a33d-0a75f0bae727
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure DevExpPICPp = ('analisis_datos cp_vw_powerbi_producible_v5'[ExpPI (GWh)]-'analisis_datos cp_vw_powerbi_producible_v5'[ExpCP (GWh)])/'analisis_datos cp_vw_powerbi_producible_v5'[ExpCP (GWh)]
+		lineageTag: 56afa26b-e714-41b2-b0d8-7c4b5af172c0
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure DRbe = [DR]/(sum('analisis_datos cp_vw_powerbi_producible_v5'[ProdPpto])+sum('analisis_datos cp_vw_powerbi_producible_v5'[VertidosPpto]))
+		lineageTag: 997dcc92-a7f6-413d-8167-90fc12686268
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column IdActivo
+		dataType: string
+		lineageTag: 839d84bf-3226-4b84-9440-8a4ecc3205d5
+		summarizeBy: none
+		sourceColumn: IdActivo
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 2de38c6b-7e03-4523-a867-196ad9618eb8
+		summarizeBy: none
+		sourceColumn: Date
+
+		variation Variación
+			isDefault
+			relationship: c6fae189-55c9-4fb3-9763-a3fa0b07a678
+			defaultHierarchy: LocalDateTable_19571e84-efba-4288-8ed8-f3549a54bef3.'Jerarquía de fechas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Pot
+		dataType: double
+		lineageTag: dfe02dd5-f1aa-4b07-9616-6b08cdb30b89
+		summarizeBy: sum
+		sourceColumn: Pot
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ExpCP
+		dataType: double
+		lineageTag: 150c5526-a7c2-4088-9bf4-da04658bcb98
+		summarizeBy: sum
+		sourceColumn: ExpCP
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ExpPI
+		dataType: double
+		lineageTag: 33f5e655-2fef-4b4f-9db9-bdeea692e931
+		summarizeBy: sum
+		sourceColumn: ExpPI
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Prediccion
+		dataType: double
+		lineageTag: 0061fcb2-db7e-4459-a2c7-efad752fb5fc
+		summarizeBy: sum
+		sourceColumn: Prediccion
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Prod
+		dataType: double
+		lineageTag: 57ab0381-130e-4ad7-a75f-1b5e0ec49b4f
+		summarizeBy: sum
+		sourceColumn: Prod
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column VertidosWER
+		dataType: double
+		lineageTag: b6ecf1a7-9d2b-46bb-abe8-e11233ed8dc2
+		summarizeBy: sum
+		sourceColumn: VertidosWER
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column VertidosCCS
+		dataType: double
+		lineageTag: a8cb162b-b8e2-4c08-808e-73e67774c3b5
+		summarizeBy: sum
+		sourceColumn: VertidosCCS
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ProdPpto
+		dataType: double
+		lineageTag: cdc3a58e-2ea4-4207-a153-91e2fb2bf7bf
+		summarizeBy: sum
+		sourceColumn: ProdPpto
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column VertidosPpto
+		dataType: double
+		lineageTag: 1da345bd-70ac-4c48-a46c-230363ebbe42
+		summarizeBy: sum
+		sourceColumn: VertidosPpto
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Longterm
+		dataType: double
+		lineageTag: 588cdbfa-3ee3-4380-b944-f237e8a109bc
+		summarizeBy: sum
+		sourceColumn: Longterm
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column MATLAB
+		dataType: double
+		lineageTag: b0d8a356-f0c5-46b0-a296-1b6667a71539
+		summarizeBy: sum
+		sourceColumn: MATLAB
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Area
+		dataType: string
+		lineageTag: 9d3a101d-6ff8-462d-81e6-89a6cb06b43d
+		summarizeBy: none
+		sourceColumn: Area
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'analisis_datos cp_vw_powerbi_producible_v5' = m
+		mode: import
+		source =
+				let
+				    Origen = MySQL.Database("172.16.15.18", "analisis_datos", [ReturnSingleDatabase=true]),
+				    analisis_datos_cp_vw_powerbi_producible_v5 = Origen{[Schema="analisis_datos",Item="cp_vw_powerbi_producible_v5"]}[Data]
+				in
+				    analisis_datos_cp_vw_powerbi_producible_v5
+
+	annotation PBI_ResultType = Table
+

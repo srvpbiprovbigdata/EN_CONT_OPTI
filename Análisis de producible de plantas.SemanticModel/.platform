@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Análisis de producible de plantas"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "6187d197-306b-8f1c-4d3e-6c66a3ca088e"
+  }
+}
